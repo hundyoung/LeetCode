@@ -3,13 +3,6 @@ from typing import List
 
 class Solution:
     def jump(self, nums: List[int]) -> int:
-        # dp = [len(nums) for i in range(len(nums))]
-        # max_step = nums[0]
-        # dp[0]=0
-        # for i in range(1,max_step+1):
-        #     if i < len(nums):
-        #         dp[i]=1
-        # for i in range(1,len(nums)):
         i=0
         count = 0
         while i <len(nums):
