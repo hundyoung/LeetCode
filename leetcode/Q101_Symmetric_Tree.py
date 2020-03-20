@@ -7,9 +7,21 @@ class TreeNode:
 
 class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
-        if not root.left and not root.right:
+        if not root:
             return True
-        elif not root.left or not root.right:
-            return False
-        else:
-            pass
+        def back_tack(left_node:TreeNode,right_node:TreeNode):
+            if left_node and right_node:
+                if left_node.val == right_node.val:
+                    result = back_tack(left_node.left,right_node.right) and back_tack(left_node.right,right_node.left)
+                else:
+                    result = False
+            else:
+                if left_node or right_node:
+                    result = False
+                else:
+                    result = True
+            return result
+        result = back_tack(root.left,root.right)
+
+        return result
+
