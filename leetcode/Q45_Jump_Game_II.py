@@ -3,27 +3,22 @@ from typing import List
 
 class Solution:
     def jump(self, nums: List[int]) -> int:
+        count =0
         i=0
-        count = 0
-        while i <len(nums):
-            max_step = nums[i]
-            next_max_step = 0
-            next_max_j = 0
-            if i >= len(nums) - 1:
-                return count
+        while i <len(nums)-1:
+            n = nums[i]
+            max_step =0
+            next_i=i
+            for step in range(1,n+1):
+                j = i+step
+                if j>=len(nums)-1:
+                    next_i = j
+                    break
+                if nums[j]+j>max_step:
+                    max_step=nums[j]+j
+                    next_i=j
             count+=1
-            for j in range(1,max_step+1):
-                next_i = j+i
-                # if next_i>=len(nums)-1:
-                #     return count
-                next_step = j+nums[next_i]
-                # if next_step>=len()
-                if next_step<len(nums) and next_step>=next_max_step:
-                    next_max_step = next_step
-                    next_max_j = next_max_step+i
-            count+=1
-
-            i = next_max_j
+            i=next_i
         return count
 s = Solution()
-print(s.jump([1,2,3]))
+print(s.jump([2,3,1,1,4]))
